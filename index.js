@@ -1,26 +1,16 @@
 const express = require('express');
 const App = express();
 const Twitter = require('twitter');
+const cors = require('cors');
 
 require('dotenv').config();
+
+App.use(cors());
 
 const client = new Twitter({
 	consumer_key: process.env.TWITTER_CONSUMER_KEY,
 	consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
 	bearer_token: process.env.TWITTER_BEARER_TOKEN
-});
-
-app.use(function(req, res, next) {
-	var allowedOrigins = ['http://thecreativecrypto.com', 'http://localhost:8080'];
-	var origin = req.headers.origin;
-	if(allowedOrigins.indexOf(origin) > -1){
-		res.setHeader('Access-Control-Allow-Origin', origin);
-	}
-	//res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
-	res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
-	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-	res.header('Access-Control-Allow-Credentials', true);
-	return next();
 });
 
 App.get('/', (req, res) => {
