@@ -25,4 +25,4 @@ App.get('/', (req, res) => {
 	});
 });
 
-App.listen(8080);
+App.listen(process.env.PORT || 8080);
