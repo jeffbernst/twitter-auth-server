@@ -19,7 +19,7 @@ App.get('/', (req, res) => {
 		tweet_mode: 'extended'
 	};
 
-	client.get('statuses/user_timeline', params, function(error, tweets, response) {
+	client.get('statuses/user_timeline', params, function(error, tweets) {
 		if(error) throw error;
 		res.send(tweets);
 	});
